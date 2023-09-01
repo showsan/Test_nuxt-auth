@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  nuxt-app:
+    build: ./
+    volumes:
+      - ./src:/src:cached
+    working_dir: '/src'
+    ports:
+      - 3012:3000
+      - 24679:24678
+      - 5556:5555
+      - 8080:80
+    tty: true
+    environment:
+      HOST: 0.0.0.0
+      port: 3000
+      CHOKIDAR_USERPOLLING: true
+    command: bash -c 'npm run dev'
